@@ -1,0 +1,34 @@
+
+<div ng-controller="ecran1_BNP_Controller as ecran1Ctrl">
+
+    <table style="width:90%" align="center">
+        <tr>
+            <td id="countryList">
+                Liste de pays
+            </td>
+            <td>
+                nombre de pays=
+            </td>
+            <td align="right">
+                <div>
+                    Recherche <input name="search" placeholder="rechercher" size="40" >
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <h1>cette page est la page d'accueil du projet</h1>
+    </div>
+
+    <table>
+        <tr ng-repeat="country in countrys | orderBy : 'Country'">
+            <td>blabla</td>
+            <td>{{country.Name}}</td>
+            <td>{{country.All}}</td>
+            <td>{{country.None}}</td>
+            <td>{{country.Custom}}</td>
+        </tr>
+    </table>
+
+</div>

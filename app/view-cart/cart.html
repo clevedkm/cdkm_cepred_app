@@ -1,0 +1,51 @@
+<div>
+
+    <h2> coucou</h2>
+
+
+    <table>
+       <thead>
+       <tr>
+           <th></th>
+           <th>Titre</th>
+           <th>Auteur</th>
+           <th> Prix Unitaire</th>
+           <th>Quantité</th>
+           <th></th>
+       </tr>
+       </thead>
+       <tbody>
+           <!--<tr ng-repeat="book in results = (catalogCtrl.catalog | filter : catalogCtrl.search.text)">-->
+           <tr ng-repeat="row in cartCtrl.service.rows"  ng-class="{big : cartCtrl.service.isBig(row)}">
+                   <td><a ng-href="#/book/{{row.book.isbn10}}" >
+                   <img ng-src="../api/img/{{row.book.isbn10}}.jpg" ></a>
+                   </td>
+               <td>{{::row.book.title | uppercase}}</td>
+               <td>{{::row.book.author}}</td>
+               <td class="right">{{::row.book.price | currency}}</td>
+               <td><input type="number" ng-model="row.quantity"></td>
+
+
+               <td class="right">{{cartCtrl.service.ht(row) | currency}}</td>
+               <td class="right">{{cartCtrl.service.ttc(row) | currency}}</td>
+
+               <td ><button ng-click="catalogCtrl.buy(book)">Supprimer</button> </td>
+           </tr>
+
+           <tr>
+               <td>TOTAL :</td>
+               <td></td>
+               <td></td>
+               <td></td>
+               <td></td>
+
+               <td class="right">{{cartCtrl.service.totalHt(row) | currency}}</td>
+               <td class="right">{{cartCtrl.service.totalTtc(row) | currency}}</td>
+
+               <td ><button ng-click="catalogCtrl.buy(book)">Supprimer</button> </td>
+           </tr>
+       </tbody>
+   </table>
+
+
+</div>

@@ -1,0 +1,9 @@
+pour les outils installe dans ce projet:
+
+npm install angular
+
+npm install bootstrap
+
+npm install jquery
+
+voir ligne à supprimer

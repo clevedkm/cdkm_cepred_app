@@ -1,0 +1,15 @@
+<div class="gmaps"></div>
+<div class="legend" ng-transclude></div>
+<form novalidate name="$ctrl.form" ng-submit="$ctrl.addMarker()">
+    <input type="text" required ng-model="$ctrl.markerLabel">
+
+    <input type="submit"  value="Ajouter un marqueur"  ng-disabled="$ctrl.form.$invalid">
+
+</form>
+
+<p>
+    <button ng-repeat="bookmark in $ctrl.bookmarks"
+            ng-click="$ctrl.goto(bookmark) ">
+        {{bookmark.label}}
+    </button>
+</p>

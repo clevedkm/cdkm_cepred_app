@@ -1,0 +1,35 @@
+
+
+
+#body {
+        margin-left:15%;
+        margin-right:15%;
+        background-color:white;
+        padding-top:5px; display:block;
+        }
+
+#hr_header{
+           background-color:#C0C0CC;
+         }
+
+#header #menu > ul {
+    color: #333;
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+
+
+
+
+
+hr {
+    display: block;
+    margin-top: 0.0em;
+    margin-bottom: 0.0em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 10px;
+}
+

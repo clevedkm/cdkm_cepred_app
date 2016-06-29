@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <title>Formulaire dynamique</title>
+  <link rel="stylesheet" href="app.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-messages.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller="DynFormCtrl as formCtrl">
+  <h1>Formulaire dynamique</h1>
+
+  <form name="formCtrl.form" novalidate ng-submitted="formCtrl.save()">
+    <div ng-repeat="field in formCtrl.fields" class="formRow"
+         ng-switch="field.type" ng-form name="subform">
+      {{field.label}} <span ng-show="field.constraints.required" class="error">*</span>
+      <div ng-switch-when="select">
+        <select ng-model="formCtrl.data[field.property]"
+                ng-options="code as label for (code, label) in field.list"></select>
+      </div>
+      <div ng-switch-when="checkbox">
+        <input type="checkbox" ng-model="formCtrl.data[field.property]">
+      </div>
+      <div ng-switch-default>
+        <input type="{{field.type}}" ng-model="formCtrl.data[field.property]"
+        ng-required = "field.constraints.required" name="inputField">
+
+        <span ng-messages="subform.inputField.$error" class="error"
+          ng-show="subform.inputField.$touched">
+          <span ng-message="number"> ceci n'est pas un nombre</span>
+          <span ng-message="email"> Format email incorrecte</span>
+          <span ng-message="required"> champs obligatoir</span>
+        </span>
+      </div>
+
+    </div>
+
+
+  <p><input type="submit" value="Save"
+            ng-disabled="formCtrl.form.$pristine
+            || (formCtrl.form.$submitted && formCtrl.form.$invalid)
+            || formCtrl.status">
+    <img ng-show="formCtrl.status=='saving'" src="ajax-loader.gif">
+    <img ng-show="formCtrl.status=='saved'" src="check.png">
+  </p>
+
+  </form>
+
+  <p>{{formCtrl.data}}</p>
+
+  <pre>{{formCtrl.fields | json }}</pre>
+
+</body>
+</html>

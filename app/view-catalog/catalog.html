@@ -1,0 +1,59 @@
+<div>
+
+    <h2> coucou</h2>
+
+    <form>
+        <p>Texte (partout) : <input type="text" ng-model="catalogCtrl.state.search.text"></p>
+        <p>Titre <input type="text" ng-model="catalogCtrl.state.search.text.title"></p>
+        <p>Auteur <input type="text" ng-model="catalogCtrl.state.search.text.author"></p>
+        <p>Prix min <input type="number" step="0.1" ng-model="catalogCtrl.state.search.price.min">
+        Prix max <input type="number" step="0.1" ng-model="catalogCtrl.state.search.price.max"></p>
+
+        <p>Note <input type="number" step="0.1" ng-model="catalogCtrl.state.search.rating.min">
+            Prix max <input type="number" step="0.1" ng-model="catalogCtrl.state.search.rating.max"></p>
+
+        <p>Tri :
+            <select ng-model="catalogCtrl.state.selectedOrder"
+                    ng-options="option.label for option in catalogCtrl.orderOptions ">
+            </select>
+            {{catalogCtrl.selectedOrder}}
+        </p>
+
+        <p> {{catalogCtrl.search.text}}</p>
+    </form>
+    <p> Résultat :
+        <!--{{(catalogCtrl.catalog | filter : catalogCtrl.search.text).length}}-->
+        {{results.length}}
+    </p>
+
+    <table>
+       <thead>
+       <tr>
+           <th>image</th>
+           <th>Titre</th>
+           <th>Auteur</th>
+           <th>Prix unitaire HT</th>
+           <th>Note</th>
+       </tr>
+       </thead>
+       <tbody>
+           <!--<tr ng-repeat="book in results = (catalogCtrl.catalog | filter : catalogCtrl.search.text)">-->
+           <tr ng-repeat="book in catalogCtrl.catalog
+                    | filter : catalogCtrl.state.search.text
+                    | interval : 'price'  : catalogCtrl.state.search.price.min : catalogCtrl.state.search.price.max
+                    | interval : 'rating' : catalogCtrl.state.search.rating.min : catalogCtrl.state.search.rating.max
+                    | orderBy : catalogCtrl.state.selectedOrder.expression : catalogCtrl.state.selectedOrder.reverse
+                    as results">
+               <th><a ng-href="#/book/{{book.isbn10}}">
+                   <img ng-src="../api/img/{{book.isbn10}}.jpg"></a></th>
+               <td>{{::book.title | uppercase}}</td>
+               <td>{{::book.author}}</td>
+               <td class="right">{{::book.price | currency}}</td>
+               <td class="right" rating="book.rating" max="5"></td>
+               <td class="right"><button ng-click="catalogCtrl.buy(book)">Ajouter</button> </td>
+           </tr>
+       </tbody>
+   </table>
+
+
+</div>

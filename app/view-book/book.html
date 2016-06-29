@@ -1,0 +1,9 @@
+<div ng-if="bookCtrl.book" >
+    <h2> Book !!! {{bookCtrl.book.title}}</h2>
+    <h3>
+        <div ng-bind-html="bookCtrl.book.description"></div>
+
+    </h3>
+</div>
+
+<div ng-if="!bookCtrl.book" class="error">{{bookCtrl.error}}</div>
