@@ -2,7 +2,7 @@ logs/*
 !.gitkeep
 node_modules/
 bower_components/
-ng1-books/
+app/ng1-books/*
 tmp
 .DS_Store
 .idea
