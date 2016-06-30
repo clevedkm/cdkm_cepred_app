@@ -15,5 +15,8 @@
     "angular-mocks": "~1.4.0",
     "angular-ui-router": "~0.2.18",
     "html5-boilerplate": "~5.2.0"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }

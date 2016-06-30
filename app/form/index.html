@@ -10,9 +10,10 @@
 </head>
 
 <body ng-controller="DynFormCtrl as formCtrl">
-  <h1>Formulaire dynamique</h1>
+  <h3>Formulaire d'inscription</h3>
 
   <form name="formCtrl.form" novalidate ng-submitted="formCtrl.save()">
+
     <div ng-repeat="field in formCtrl.fields" class="formRow"
          ng-switch="field.type" ng-form name="subform">
       {{field.label}} <span ng-show="field.constraints.required" class="error">*</span>

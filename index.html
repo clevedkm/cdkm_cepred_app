@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title ng-bind="title">Bookstore</title>
+    <link rel="stylesheet" href="app/css/app.css">
+
+    <script src="app/bower_components/angular/angular.js"></script>
+    <script src="app/bower_components/angular-route/angular-route.js"></script>
+    <script src="app/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="app/bower_components/angular-i18n/angular-locale_fr-fr.js"></script>
+    <script src="app/controllers/app.js"></script>
+    <script src="app/view-catalog/catalog.js"></script>
+    <script src="app/view-book/book.js"></script>
+    <script src="app/components/filters.js"></script>
+    <script src="app/components/services.js"></script>
+    <script src="app/view-cart/cart.js"></script>
+    <script src="app/components/directives.js"></script>
+
+
+    <script src="app/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="app/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="app/bower_components/angular-material/angular-material.js"></script>
+
+    <!--les controlleur de la page-->
+    <script src="app/controllers/bodyPageController.js"></script>
+    <!--<script src="app/controllers/form/app.js"></script>-->
+
+    <!--les fichier css de l'application-->
+    <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.css" >
+    <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.css">
+
+    <link href="app/css/css_header.css" rel="stylesheet">
+    <link href="app/css/css_body.css" rel="stylesheet">
+    <link href="app/css/css_footer.css" rel="stylesheet">
+    <link href="app/form/app.css" rel="stylesheet">
+
+</head>
+
+
+<body ng-app="appCepred">
+
+    <div>
+        <!--header-->
+        <div ng-include="'app/pages/header.html'"></div>
+
+        <!--body-->
+        <div ng-include="'app/pages/body.html'"> </div>
+
+        <!--footer-->
+        <div ng-include="'app/pages/footer.html'">    </div>
+
+    </div>
+
+</body>
+
+</html>
